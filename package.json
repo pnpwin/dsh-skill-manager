@@ -1,6 +1,6 @@
 {
   "name": "@pnpwin/dsh-skill-manager",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Skill inventory, observed lifecycle and invocation statistics for DeepSeek Harness",
   "author": "pnpwin",
   "repository": { "type": "git", "url": "git+https://github.com/pnpwin/dsh-skill-manager.git" },
@@ -22,7 +22,7 @@
     "test": "node --test tests/*.test.js",
     "check": "node src/check.js",
     "build": "node src/check.js",
-    "prepack": "node src/check.js"
+    "release:check": "npm test && npm run build"
   },
   "dsh": {
     "bundle": { "patch": "./cordis.patch.yml" },

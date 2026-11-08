@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+- Remove the automatic `prepack` lifecycle hook so pnpm can install the native ESM package directly from a GitHub tag without Git dependency preparation/build approval.
+- Keep validation explicit in `npm run release:check` before publication; no install/prepare lifecycle scripts or runtime compilation are needed.
+- No runtime, database or API changes from 0.2.1. Existing configuration, history and credential bindings remain unchanged.
+
 ## 0.2.1
 
 - Public GitHub distribution, repository metadata and version-pinned Plugin Manager installation instructions.

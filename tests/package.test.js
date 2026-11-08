@@ -21,6 +21,13 @@ async function fixture(t) {
 }
 const check = root => spawnSync(process.execPath, [join(root, 'src', 'check.js')], { encoding: 'utf8' });
 
+test('native ESM GitHub distribution has no automatic lifecycle build hooks', async () => {
+  const manifest = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
+  for (const hook of ['prepare', 'prepack', 'postpack', 'prepublish', 'prepublishOnly', 'preinstall', 'install', 'postinstall']) assert.equal(Object.hasOwn(manifest.scripts, hook), false, `Unexpected lifecycle hook: ${hook}`);
+  assert.equal(manifest.scripts.build, 'node src/check.js');
+  assert.equal(manifest.scripts['release:check'], 'npm test && npm run build');
+});
+
 test('package gate allows documentation metadata and existing test/resource directories', async t => {
   const root = await fixture(t), result = check(root);
   assert.equal(result.status, 0, result.stderr);
