@@ -1,0 +1,12 @@
+node_modules/
+*.tgz
+*.sqlite
+*.sqlite-*
+coverage/
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.env.*
+.diagnostics/
+.firecrawl/

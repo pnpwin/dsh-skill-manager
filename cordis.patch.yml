@@ -1,0 +1,11 @@
+- insert:
+    - id: pnpwin-skill-manager
+      name: '@pnpwin/dsh-skill-manager'
+      config:
+        workspaceDirs: []
+        scanIntervalMs: 60000
+        scanTimeoutMs: 30000
+        debounceMs: 750
+        maxContexts: 256
+        maxFileBytes: 1048576
+        observationCacheSize: 4096

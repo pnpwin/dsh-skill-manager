@@ -1,0 +1,5367 @@
+{
+  "apiVersion": 1,
+  "identityVersion": 2,
+  "generatedPreview": true,
+  "disclosure": "Сгенерированное демо-превью, не снимок работающего DSH. Только публичные примеры; пути и идентификаторы обезличены.",
+  "counts": {
+    "groupCount": 26,
+    "instanceCount": 26,
+    "count24h": 6,
+    "count7d": 6,
+    "total": 6
+  },
+  "skills": [
+    {
+      "id": "demo-instance-1",
+      "name": "find-skills",
+      "description": "Поиск подходящих скиллов для новых задач.",
+      "provider": "filesystem",
+      "source": "user-agents",
+      "path": "[путь скрыт]",
+      "resourceBase": {
+        "kind": "opaque",
+        "description": "Ресурсы провайдера · расположение скрыто"
+      },
+      "status": "present",
+      "firstSeenAt": null,
+      "lastSeenAt": null,
+      "createdAt": null,
+      "createdEvidence": "unknown",
+      "createdBy": null,
+      "modifiedAt": null,
+      "modifiedBy": null,
+      "contentHash": null,
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "availability": [
+        {
+          "contextId": "demo-scope-1",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-2",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-3",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-4",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-5",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-6",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-7",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-8",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-9",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-10",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-11",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-12",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-13",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-14",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-15",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-16",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-17",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-18",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-19",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-20",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-21",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-22",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-23",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-24",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-25",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-26",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-27",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-28",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-29",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-30",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-31",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-32",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-33",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-34",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-35",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-36",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-37",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-38",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-39",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-40",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-41",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-42",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-43",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-44",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-45",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-46",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-47",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-48",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-49",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-50",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-51",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-52",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-53",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-54",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-55",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-56",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-57",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-58",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-59",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-60",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-61",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-62",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-63",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-64",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-65",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-66",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-67",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-68",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-69",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-70",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-71",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-72",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-73",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-74",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-75",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-76",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-77",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-78",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-79",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-80",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-81",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-82",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-83",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-84",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-85",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-86",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-87",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-88",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-89",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-90",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-91",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-92",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-93",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-94",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-95",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-96",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-97",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-98",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-99",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-100",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-101",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-102",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-103",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-104",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-105",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-106",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-107",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-108",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-109",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-110",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-111",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-112",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-113",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-114",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-115",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-116",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-117",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-118",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-119",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-120",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-121",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-122",
+          "cwd": null,
+          "effective": false,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-123",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        },
+        {
+          "contextId": "demo-scope-124",
+          "cwd": null,
+          "effective": true,
+          "source": "user-agents"
+        }
+      ],
+      "usage": {
+        "count24h": 0,
+        "count7d": 0,
+        "total": 0,
+        "lastAt": null,
+        "lastActor": null
+      }
+    },
+    {
+      "id": "demo-instance-2",
+      "name": "agent-experience",
+      "description": "Проектирование инструментов, контекста и модельного взаимодействия.",
+      "provider": "filesystem",
+      "source": "custom",
+      "path": "[путь скрыт]",
+      "resourceBase": {
+        "kind": "opaque",
+        "description": "Ресурсы провайдера · расположение скрыто"
+      },
+      "status": "present",
+      "firstSeenAt": null,
+      "lastSeenAt": null,
+      "createdAt": null,
+      "createdEvidence": "unknown",
+      "createdBy": null,
+      "modifiedAt": null,
+      "modifiedBy": null,
+      "contentHash": null,
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "availability": [
+        {
+          "contextId": "demo-scope-1",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-2",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-3",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-4",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-5",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-6",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-7",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-8",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-9",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-10",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-11",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-12",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-13",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-14",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-15",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-16",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-17",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-18",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-19",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-20",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-21",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-22",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-23",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-24",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-25",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-26",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-27",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-28",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-29",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-30",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-31",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-32",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-33",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-34",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-35",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-36",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-37",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-38",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-39",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-40",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-41",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-42",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-43",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-44",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-45",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-46",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-47",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-48",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-49",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-50",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-51",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        }
+      ],
+      "usage": {
+        "count24h": 0,
+        "count7d": 0,
+        "total": 0,
+        "lastAt": null,
+        "lastActor": null
+      }
+    },
+    {
+      "id": "demo-instance-3",
+      "name": "cordis-plugin-development",
+      "description": "Разработка и подключение плагинов DSH.",
+      "provider": "filesystem",
+      "source": "custom",
+      "path": "[путь скрыт]",
+      "resourceBase": {
+        "kind": "opaque",
+        "description": "Ресурсы провайдера · расположение скрыто"
+      },
+      "status": "present",
+      "firstSeenAt": null,
+      "lastSeenAt": null,
+      "createdAt": null,
+      "createdEvidence": "unknown",
+      "createdBy": null,
+      "modifiedAt": null,
+      "modifiedBy": null,
+      "contentHash": null,
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "availability": [
+        {
+          "contextId": "demo-scope-1",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-2",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-3",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-4",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-5",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-6",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-7",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-8",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-9",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-10",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-11",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-12",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-13",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-14",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-15",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-16",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-17",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-18",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-19",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-20",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-21",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-22",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-23",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-24",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-25",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-26",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-27",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-28",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-29",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-30",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-31",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-32",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-33",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-34",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-35",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-36",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-37",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-38",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-39",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-40",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-41",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-42",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-43",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-44",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-45",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-46",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-47",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-48",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-49",
+          "cwd": null,
+          "effective": false,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-50",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        },
+        {
+          "contextId": "demo-scope-51",
+          "cwd": null,
+          "effective": true,
+          "source": "custom"
+        }
+      ],
+      "usage": {
+        "count24h": 2,
+        "count7d": 2,
+        "total": 2,
+        "lastAt": "2026-11-08T07:40:01.230Z",
+        "lastActor": {
+          "kind": "agent",
+          "label": "Агент · обезличено"
+        }
+      }
+    },
+    {
+      "id": "demo-instance-4",
+      "name": "skill-loop-guide",
+      "description": "Просмотр обучения, предложений улучшений и откатов.",
+      "provider": "local-skill-loop",
+      "source": "runtime",
+      "path": null,
+      "resourceBase": {
+        "kind": "opaque",
+        "description": "Ресурсы провайдера · расположение скрыто"
+      },
+      "status": "present",
+      "firstSeenAt": null,
+      "lastSeenAt": null,
+      "createdAt": null,
+      "createdEvidence": "unknown",
+      "createdBy": null,
+      "modifiedAt": null,
+      "modifiedBy": null,
+      "contentHash": null,
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "availability": [
+        {
+          "contextId": "demo-scope-1",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-2",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-3",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-4",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-5",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-6",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-7",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-8",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-9",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-10",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-11",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-12",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-13",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-14",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-15",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-16",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-17",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-18",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-19",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-20",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-21",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-22",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-23",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-24",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-25",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-26",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-27",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-28",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-29",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-30",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-31",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-32",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-33",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-34",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-35",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-36",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-37",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-38",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-39",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-40",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-41",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-42",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-43",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-44",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-45",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-46",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-47",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-48",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-49",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-50",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-51",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-52",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-53",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-54",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-55",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-56",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-57",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-58",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-59",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-60",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-61",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-62",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-63",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-64",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-65",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-66",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-67",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-68",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-69",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-70",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-71",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-72",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-73",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-74",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-75",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-76",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-77",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-78",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-79",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-80",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-81",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-82",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-83",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-84",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-85",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-86",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-87",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-88",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-89",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-90",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-91",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-92",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-93",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-94",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-95",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-96",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-97",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-98",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-99",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-100",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-101",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-102",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-103",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-104",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-105",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-106",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-107",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-108",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-109",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-110",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-111",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-112",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-113",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-114",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-115",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-116",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-117",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-118",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-119",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-120",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-121",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-122",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-123",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-124",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-125",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-126",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-127",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-128",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-129",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-130",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-131",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-132",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-133",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-134",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-135",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-136",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-137",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-138",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-139",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-140",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-141",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-142",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-143",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-144",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-145",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-146",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-147",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-148",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-149",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-150",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-151",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-152",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-153",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-154",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-155",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-156",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-157",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-158",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-159",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-160",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-161",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-162",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-163",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-164",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-165",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-166",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-167",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-168",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-169",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-170",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-171",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-172",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-173",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-174",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-175",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-176",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-177",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-178",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-179",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-180",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-181",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-182",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-183",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-184",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-185",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-186",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-187",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-188",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-189",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-190",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-191",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-192",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-193",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-194",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-195",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-196",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-197",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-198",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-199",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-200",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        }
+      ],
+      "usage": {
+        "count24h": 0,
+        "count7d": 0,
+        "total": 0,
+        "lastAt": null,
+        "lastActor": null
+      }
+    },
+    {
+      "id": "demo-instance-5",
+      "name": "dsh-skill-creator",
+      "description": "Создание и оценка скиллов с контролируемым сравнением результатов.",
+      "provider": "dsh-skill-authoring",
+      "source": "runtime",
+      "path": null,
+      "resourceBase": {
+        "kind": "opaque",
+        "description": "Ресурсы провайдера · расположение скрыто"
+      },
+      "status": "present",
+      "firstSeenAt": null,
+      "lastSeenAt": null,
+      "createdAt": null,
+      "createdEvidence": "unknown",
+      "createdBy": null,
+      "modifiedAt": null,
+      "modifiedBy": null,
+      "contentHash": null,
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "availability": [
+        {
+          "contextId": "demo-scope-1",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-2",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-3",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-4",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-5",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-6",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-7",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-8",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-9",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-10",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-11",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-12",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-13",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-14",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-15",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-16",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-17",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-18",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-19",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-20",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-21",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-22",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-23",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-24",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-25",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-26",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-27",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-28",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-29",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-30",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-31",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-32",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-33",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-34",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-35",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-36",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-37",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-38",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-39",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-40",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-41",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-42",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-43",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-44",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-45",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-46",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-47",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-48",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-49",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-50",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-51",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-52",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-53",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-54",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-55",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-56",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-57",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-58",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-59",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-60",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-61",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-62",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-63",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-64",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-65",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-66",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-67",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-68",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-69",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-70",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-71",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-72",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-73",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-74",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-75",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-76",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-77",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-78",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-79",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-80",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-81",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-82",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-83",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-84",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-85",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-86",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-87",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-88",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-89",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-90",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-91",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-92",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-93",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-94",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-95",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-96",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-97",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-98",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-99",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-100",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-101",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-102",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-103",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-104",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-105",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-106",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-107",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-108",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-109",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-110",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-111",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-112",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-113",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-114",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-115",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-116",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-117",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-118",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-119",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-120",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-121",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-122",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-123",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-124",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-125",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-126",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-127",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-128",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-129",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-130",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-131",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-132",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-133",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-134",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-135",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-136",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-137",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-138",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-139",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-140",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-141",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-142",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-143",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-144",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-145",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-146",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-147",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-148",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-149",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-150",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-151",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-152",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-153",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-154",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-155",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-156",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-157",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-158",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-159",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-160",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-161",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-162",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-163",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-164",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-165",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-166",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-167",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-168",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-169",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-170",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-171",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-172",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-173",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-174",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-175",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-176",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-177",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-178",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-179",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-180",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-181",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-182",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-183",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-184",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-185",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-186",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-187",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-188",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-189",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-190",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-191",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-192",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-193",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-194",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-195",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-196",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-197",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-198",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-199",
+          "cwd": null,
+          "effective": false,
+          "source": "runtime"
+        },
+        {
+          "contextId": "demo-scope-200",
+          "cwd": null,
+          "effective": true,
+          "source": "runtime"
+        }
+      ],
+      "usage": {
+        "count24h": 2,
+        "count7d": 2,
+        "total": 2,
+        "lastAt": "2026-11-08T01:34:28.128Z",
+        "lastActor": {
+          "kind": "agent",
+          "label": "Агент · обезличено"
+        }
+      }
+    },
+    {
+      "id": "demo-instance-6",
+      "name": "official-plugins",
+      "description": "Поиск возможностей и опциональных плагинов DSH.",
+      "provider": "dsh-official-plugins",
+      "source": "bundled",
+      "path": null,
+      "resourceBase": null,
+      "status": "present",
+      "firstSeenAt": null,
+      "lastSeenAt": null,
+      "createdAt": null,
+      "createdEvidence": "unknown",
+      "createdBy": null,
+      "modifiedAt": null,
+      "modifiedBy": null,
+      "contentHash": null,
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": false
+      },
+      "availability": [
+        {
+          "contextId": "demo-scope-1",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-2",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-3",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-4",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-5",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-6",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-7",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-8",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-9",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-10",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-11",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-12",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-13",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-14",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-15",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-16",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-17",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-18",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-19",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-20",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-21",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-22",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-23",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-24",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-25",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-26",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-27",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-28",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-29",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-30",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-31",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-32",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-33",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-34",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-35",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-36",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-37",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-38",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-39",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-40",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-41",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-42",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-43",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-44",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-45",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-46",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-47",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-48",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-49",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-50",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-51",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-52",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-53",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-54",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-55",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-56",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-57",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-58",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-59",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-60",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-61",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-62",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-63",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-64",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-65",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-66",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-67",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-68",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-69",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-70",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-71",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-72",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-73",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-74",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-75",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-76",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-77",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-78",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-79",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-80",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-81",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-82",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-83",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-84",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-85",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-86",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-87",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-88",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-89",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-90",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-91",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-92",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-93",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-94",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-95",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-96",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-97",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-98",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-99",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-100",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-101",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-102",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-103",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-104",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-105",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-106",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-107",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-108",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-109",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-110",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-111",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-112",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-113",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-114",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-115",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-116",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-117",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-118",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-119",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-120",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-121",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-122",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-123",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-124",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-125",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-126",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-127",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-128",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-129",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-130",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-131",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-132",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-133",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-134",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-135",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-136",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-137",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-138",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-139",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-140",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-141",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-142",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-143",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-144",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-145",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-146",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-147",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-148",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-149",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-150",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-151",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-152",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-153",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-154",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-155",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-156",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-157",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-158",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-159",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-160",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-161",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-162",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-163",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-164",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-165",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-166",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-167",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-168",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-169",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-170",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-171",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-172",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-173",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-174",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-175",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-176",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-177",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-178",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-179",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-180",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-181",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-182",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-183",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-184",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-185",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-186",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-187",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-188",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-189",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-190",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-191",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-192",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-193",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-194",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-195",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-196",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-197",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-198",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-199",
+          "cwd": null,
+          "effective": false,
+          "source": "bundled"
+        },
+        {
+          "contextId": "demo-scope-200",
+          "cwd": null,
+          "effective": true,
+          "source": "bundled"
+        }
+      ],
+      "usage": {
+        "count24h": 1,
+        "count7d": 1,
+        "total": 1,
+        "lastAt": "2026-11-07T23:23:35.459Z",
+        "lastActor": {
+          "kind": "agent",
+          "label": "Агент · обезличено"
+        }
+      }
+    }
+  ],
+  "groups": [
+    {
+      "id": "agent-experience",
+      "name": "agent-experience",
+      "instanceIds": [
+        "demo-instance-2"
+      ],
+      "instanceCount": 1,
+      "description": "Проектирование инструментов, контекста и модельного взаимодействия.",
+      "sources": [
+        "custom"
+      ],
+      "providers": [
+        "filesystem"
+      ],
+      "statuses": [
+        "present"
+      ],
+      "status": "present",
+      "modifiedAt": null,
+      "usage": {
+        "count24h": 0,
+        "count7d": 0,
+        "total": 0,
+        "lastAt": null,
+        "lastActor": null
+      },
+      "identicalCopies": [],
+      "metadataDiffers": false
+    },
+    {
+      "id": "cordis-plugin-development",
+      "name": "cordis-plugin-development",
+      "instanceIds": [
+        "demo-instance-3"
+      ],
+      "instanceCount": 1,
+      "description": "Разработка и подключение плагинов DSH.",
+      "sources": [
+        "custom"
+      ],
+      "providers": [
+        "filesystem"
+      ],
+      "statuses": [
+        "present"
+      ],
+      "status": "present",
+      "modifiedAt": null,
+      "usage": {
+        "count24h": 2,
+        "count7d": 2,
+        "total": 2,
+        "lastAt": "2026-11-08T07:40:01.230Z",
+        "lastActor": {
+          "kind": "agent",
+          "label": "Агент · обезличено"
+        }
+      },
+      "identicalCopies": [],
+      "metadataDiffers": false
+    },
+    {
+      "id": "dsh-skill-creator",
+      "name": "dsh-skill-creator",
+      "instanceIds": [
+        "demo-instance-5"
+      ],
+      "instanceCount": 1,
+      "description": "Создание и оценка скиллов с контролируемым сравнением результатов.",
+      "sources": [
+        "runtime"
+      ],
+      "providers": [
+        "dsh-skill-authoring"
+      ],
+      "statuses": [
+        "present"
+      ],
+      "status": "present",
+      "modifiedAt": null,
+      "usage": {
+        "count24h": 2,
+        "count7d": 2,
+        "total": 2,
+        "lastAt": "2026-11-08T01:34:28.128Z",
+        "lastActor": {
+          "kind": "agent",
+          "label": "Агент · обезличено"
+        }
+      },
+      "identicalCopies": [],
+      "metadataDiffers": false
+    },
+    {
+      "id": "find-skills",
+      "name": "find-skills",
+      "instanceIds": [
+        "demo-instance-1"
+      ],
+      "instanceCount": 1,
+      "description": "Поиск подходящих скиллов для новых задач.",
+      "sources": [
+        "user-agents"
+      ],
+      "providers": [
+        "filesystem"
+      ],
+      "statuses": [
+        "present"
+      ],
+      "status": "present",
+      "modifiedAt": null,
+      "usage": {
+        "count24h": 0,
+        "count7d": 0,
+        "total": 0,
+        "lastAt": null,
+        "lastActor": null
+      },
+      "identicalCopies": [],
+      "metadataDiffers": false
+    },
+    {
+      "id": "official-plugins",
+      "name": "official-plugins",
+      "instanceIds": [
+        "demo-instance-6"
+      ],
+      "instanceCount": 1,
+      "description": "Поиск возможностей и опциональных плагинов DSH.",
+      "sources": [
+        "bundled"
+      ],
+      "providers": [
+        "dsh-official-plugins"
+      ],
+      "statuses": [
+        "present"
+      ],
+      "status": "present",
+      "modifiedAt": null,
+      "usage": {
+        "count24h": 1,
+        "count7d": 1,
+        "total": 1,
+        "lastAt": "2026-11-07T23:23:35.459Z",
+        "lastActor": {
+          "kind": "agent",
+          "label": "Агент · обезличено"
+        }
+      },
+      "identicalCopies": [],
+      "metadataDiffers": false
+    },
+    {
+      "id": "skill-loop-guide",
+      "name": "skill-loop-guide",
+      "instanceIds": [
+        "demo-instance-4"
+      ],
+      "instanceCount": 1,
+      "description": "Просмотр обучения, предложений улучшений и откатов.",
+      "sources": [
+        "runtime"
+      ],
+      "providers": [
+        "local-skill-loop"
+      ],
+      "statuses": [
+        "present"
+      ],
+      "status": "present",
+      "modifiedAt": null,
+      "usage": {
+        "count24h": 0,
+        "count7d": 0,
+        "total": 0,
+        "lastAt": null,
+        "lastActor": null
+      },
+      "identicalCopies": [],
+      "metadataDiffers": false
+    }
+  ],
+  "selectedName": "dsh-skill-creator"
+}
