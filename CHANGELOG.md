@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.2
+
+- Replace ambiguous file-action labels for known provider skills without an instruction path: instruction file not specified by the provider, or protected package files where package ownership is indicated.
+- Preserve actual missing/archive/deletion labels and genuine unknown availability; a resource directory is never treated as proof that an instruction file exists.
+- Presentation-only correction: backend fileStatus, invocation policy, allowed actions, plan guards, database and saved preferences are unchanged.
+- Add POSIX/Windows package-path and provider-label regressions without filesystem mutations.
+
 ## 0.3.1
 
 - Missing/unavailable instances no longer appear enabled or offer invocation toggles. Saved/latest-known policy is displayed separately from current availability.
