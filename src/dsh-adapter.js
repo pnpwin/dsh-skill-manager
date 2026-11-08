@@ -8,7 +8,7 @@ const text = value => typeof value === 'string' && value.length > 0
 const iso = time => new Date(time).toISOString()
 
 /** Build one adapter owned by the mounting plugin. Optional services use ctx.get. */
-export function createDshAdapter(ctx, config = {}) {
+export function createDshAdapter(ctx, config = {}, { normalizeSummary = value => value } = {}) {
   const cacheLimit = config.observationCacheSize ?? 4096
   const maxContexts = config.maxContexts ?? 256
   if (!Number.isSafeInteger(cacheLimit) || cacheLimit < 1) throw new TypeError('observationCacheSize must be a positive safe integer')
@@ -52,7 +52,7 @@ export function createDshAdapter(ctx, config = {}) {
       try {
         const snapshot = await registry.snapshot({ cwd, scope, signal })
         check()
-        observations.push({ contextId: id, skills: snapshot.skills, complete: snapshot.complete })
+        observations.push({ contextId: id, skills: snapshot.skills.map(skill => normalizeSummary(skill)), complete: snapshot.complete })
         if (!snapshot.complete) addWarning('discovery-incomplete', `Skill discovery is incomplete for ${label}; absent entries are not confirmed missing.`)
       } catch (error) {
         check()

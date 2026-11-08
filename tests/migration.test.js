@@ -170,7 +170,7 @@ test('v1 three-context migration merges definitions and preserves every history 
     assert.deepEqual(membership.resourceBase, original.resourceBase);
   }
   assert.equal(store.since(), SINCE);
-  assert.equal(store.db.prepare('PRAGMA user_version').get().user_version, 2);
+  assert.equal(store.db.prepare('PRAGMA user_version').get().user_version, 3);
   assert.deepEqual(plainRows(store.db.prepare('SELECT * FROM meta ORDER BY key').all()), before.meta);
   const afterEvents = plainRows(store.db.prepare('SELECT * FROM events ORDER BY id').all());
   const afterInvocations = plainRows(store.db.prepare('SELECT * FROM invocations ORDER BY event_key').all());

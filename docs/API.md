@@ -12,7 +12,7 @@ export function apply(ctx) {
   const snapshot = manager.snapshot();
   // Do not hold a stale snapshot as a live mutable object.
   ctx.effect(() => manager.subscribe(change => {
-    // change.type: inventory | invocation | mutation | health
+    // change.type: inventory | invocation | mutation | management | health
     // Read fresh data here; an observer cannot veto committed data.
     const current = manager.snapshot();
     // Consumer owns its own evaluation/curation policy.
@@ -48,7 +48,7 @@ The same notification is emitted through DSH `skill-manager/change` (`emit`, no 
 }
 ```
 
-`SkillRecord` contains `id`, `name`, `description`, `provider`, `source`, `path`, `status`, `firstSeenAt`, `lastSeenAt`, `createdAt`, `createdEvidence`, `createdBy`, `modifiedAt`, `modifiedBy`, `contentHash`, `availability` and `usage`. Additional registry metadata may be present; consumers must not rely on undocumented extra fields. `path`, dates, actors and hash can be null. `createdEvidence` is `filesystem-birthtime` or `unknown`, never inferred original author. `contentHash` is SHA-256 of the current instruction file; retained last known hash can survive deletion or a failed read.
+`SkillRecord` contains `id`, `name`, `description`, `provider`, `source`, `path`, `status`, `firstSeenAt`, `lastSeenAt`, `createdAt`, `createdEvidence`, `createdBy`, `modifiedAt`, `modifiedBy`, `contentHash`, `availability`, `usage` and optional `management`. Additional registry metadata may be present; consumers must not rely on undocumented extra fields. `path`, dates, actors and hash can be null. `createdEvidence` is `filesystem-birthtime` or `unknown`, never inferred original author. `contentHash` is SHA-256 of the current instruction file; retained last known hash can survive deletion or a failed read.
 
 `status`: `present` means a positive file/virtual catalog observation; `missing` means a known path returned ENOENT/ENOTDIR; `unavailable` means a virtual entry is no longer available in any completely checked scope; `unknown` means physical state or invocation identity cannot be established. A present file can have zero effective memberships. `availability` entries contain `{contextId,cwd,effective,source?,description?,invocation?,resourceBase?}`. Per-scope metadata is retained here even when shared instance identity has one current summary; incomplete discovery preserves previous memberships, so inspect warnings before asserting current completeness.
 
@@ -67,8 +67,25 @@ Schema v1→v2 migration atomically redirects memberships/events/invocations, re
 - `GET /api/skill-manager/v1/snapshot`
 - `POST /api/skill-manager/v1/refresh` (no request body)
 - `GET /api/skill-manager/v1/skills?id=<sha256>&offset=0&limit=50`
+- `POST /api/skill-manager/v1/manage/prepare`, JSON `{id,action}`
+- `POST /api/skill-manager/v1/manage/execute`, JSON `{token,confirmationText?}`
+- `GET /api/skill-manager/v1/manage/status?id=<sha256>&operationId=<opaque-id>`
 
-These are exact `connection.fetch` routes, not a separate webserver or wildcard route. Existing Host/Origin/Peer authentication applies; owner-only access is enforced by DSH. Responses use no-store and nosniff. Success returns raw JSON. Error: `{error:{code,message}}`, HTTP 400 invalid request, 404 unknown ID, 503 operation failure. Non-owner access is rejected by the carrier. Runtime failure details are not returned to the browser.
+These are exact `connection.fetch` routes, not a separate webserver or wildcard route. Existing Host/Origin/Peer authentication applies; owner-only access is enforced by DSH. Responses use no-store and nosniff. Success returns raw JSON. Error: `{error:{code,message}}`: 400 invalid request, 403 protected action, 404 unknown ID, 409 changed/busy/recovery state, 410 expired or consumed plan, 413 body too large, 429 plan capacity, 503 unexpected operation failure. Non-owner access is rejected by the carrier. Expected restrictions are actionable; uncontrolled runtime failure details are not returned.
+
+## Owner management protocol (0.3)
+
+`management` is a read-only assessment: `{eligible,mode,reasonCode,reason,workingStatus,fileStatus,allowedActions,revision}`. `mode` is `file` (supported filesystem edits) or `override` (a manager-owned invocation deny without package edits). Working status is enabled/disabled/unknown; file status is active/archived/deleted/missing/unknown. An archived record can still have core `status:missing` at its original path; the independent file badge explains the managed state. Capabilities are advisory and are revalidated at preparation/admission. Reading them is not authorization.
+
+Prepare accepts only the canonical instance ID and one of enable/disable/archive/restore/delete, never a client-supplied path. It returns `{token,operationId,id,action,name,mode,targetKind,path,fileCount,totalBytes,confirmationText,expiresAt,warnings}`. A file plan has file/directory targetKind and a concrete absolute path. An override plan accepts only enable/disable, has policy targetKind, exactly null path, zero files/bytes and null confirmationText. Both require an explicit owner confirmation. JSON request bodies are bounded to 8192 bytes and reject unknown fields.
+
+Execute consumes the secret token and optional exact delete-name confirmation. Success returns the public operationId and action result. It does not delete recorded usage or history. Status returns `{id,operationId,action?,status}` where status is not-started/running/succeeded/failed/recovery-required/unknown. The public operationId is not an execution capability. The token is process-local, expires, and is never stored in the database, Session or browser persistence. Unknown network/timeout outcomes must be checked, not automatically retried. A not-started receipt only proves future non-admission after the original plan has expired.
+
+File phases and saved invocation overrides share a transactional journal with compare-and-set ownership; another Host cannot overwrite a pending operation. Schema 3 adds this journal without rewriting canonical IDs or calls. Owner frontmatter writes are attributed only when a fresh version/hash matches the exact written revision. In-progress/recovery file operations temporarily deny new skill loads for their instance. See [management/recovery](MANAGEMENT.md) and [upgrade notes](upgrade-0.3.md).
+
+Override disable is applied to native/PTC skill loading and explicit user injection through owned exact-agent policy providers/guards. Enable removes only the manager deny, never supplier-intrinsic restrictions. Package files are not modified. The manager normalizes only proven own policy summaries back to their original provider before identity/statistics; SDK-neutral catalogs may expose the actual policy provider while it owns a deny. Already loaded instructions, arbitrary filesystem reads and previously launched scripts are not revoked.
+
+User-channel counts observe accepted explicit skill requests; their success outcome does not certify that a later pre-step injected a body. Policy changes can reject that later loading. Native/PTC outcomes reflect their committed final tool results. None of these counts proves task success.
 
 ## Agent tool
 

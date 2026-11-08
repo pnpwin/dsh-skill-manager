@@ -1,5 +1,13 @@
 import { skillId } from './identity.js';
 
+/** Add a transactional filesystem-operation journal; existing identities/history are untouched. */
+export function migrateManagementV3(db) {
+  db.exec('BEGIN IMMEDIATE');
+  try {
+    db.exec('CREATE TABLE file_controls (skill_id TEXT PRIMARY KEY REFERENCES skills(id), data TEXT NOT NULL); PRAGMA user_version=3; COMMIT');
+  } catch (error) { db.exec('ROLLBACK'); throw error; }
+}
+
 const json = value => JSON.stringify(value);
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 function readObject(raw) {

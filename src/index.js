@@ -1,5 +1,6 @@
 import { createDshAdapter } from './dsh-adapter.js';
 import { createSkillManager } from './service.js';
+import { createInvocationPolicyRuntime } from './invocation-policy.js';
 import { resolveConfig, databasePath } from './config.js';
 export { Config } from './config.js';
 
@@ -8,6 +9,25 @@ export const inject = ['skills', 'agents', 'workingDirectory', 'tools', 'connect
 const json = (value, status = 200) => new Response(JSON.stringify(value), { status, headers: {
   'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff',
 } });
+async function actionBody(request, keys) {
+  if (request.headers.get('content-type')?.split(';')[0].trim().toLowerCase() !== 'application/json') throw new TypeError('Action requests require application/json');
+  const reader = request.body?.getReader();
+  if (!reader) throw new TypeError('A JSON action request is required');
+  const chunks = []; let size = 0;
+  try {
+    while (true) {
+      const part = await reader.read(); if (part.done) break;
+      size += part.value.byteLength;
+      if (size > 8192) throw Object.assign(new Error('Action request exceeds 8192 bytes'), { status: 413, code: 'request-too-large' });
+      chunks.push(Buffer.from(part.value));
+    }
+  } finally { try { await reader.cancel(); } catch { /* The bounded reader may already be closed. */ } }
+  let value;
+  try { value = JSON.parse(Buffer.concat(chunks).toString('utf8')); } catch { throw new TypeError('Invalid JSON action request'); }
+  if (!value || typeof value !== 'object' || Array.isArray(value) || Object.keys(value).some(key => !keys.includes(key))) throw new TypeError('Unexpected action request fields');
+  return value;
+}
+const validId = id => typeof id === 'string' && /^[a-f0-9]{64}$/.test(id);
 function integer(value, fallback, max) {
   if (value === null || value === undefined) return fallback;
   if (!/^\d+$/.test(String(value))) throw new TypeError('Invalid pagination');
@@ -24,7 +44,10 @@ function detail(manager, id, offset, limit) {
 /** Install one Host service and owner-authenticated routes on DSH's existing connection. */
 export function apply(ctx, input = {}) {
   const config = resolveConfig(input);
-  const manager = createSkillManager({ adapter: createDshAdapter(ctx, config), filename: databasePath(ctx, config), config,
+  let invocationRuntime;
+  const adapter = createDshAdapter(ctx, config, { normalizeSummary: summary => invocationRuntime?.normalizeSummary(summary) ?? summary });
+  const manager = createSkillManager({ adapter, filename: databasePath(ctx, config), config,
+    invocationRuntimeFactory: options => (invocationRuntime = createInvocationPolicyRuntime({ ctx, ...options })),
     publish: event => ctx.emit('skill-manager/change', event),
   });
   ctx.effect(() => () => manager.dispose(), 'skill-manager database and timers');
@@ -33,13 +56,33 @@ export function apply(ctx, input = {}) {
   ctx.provide('skillManager', api);
   const route = (path, method, operation) => ctx.effect(() => ctx.connection.fetch.register({ path: `/api/skill-manager/v1/${path}`, methods: [method], requestBody: 'buffered',
     fetch: async request => {
-      try { const value = await operation(new URL(request.url)); return value === null ? json({ error: { code: 'not-found', message: 'Skill not found' } }, 404) : json(value); }
-      catch (error) { return json({ error: { code: error instanceof TypeError ? 'invalid-request' : 'operation-failed', message: error instanceof TypeError ? error.message : 'Skill manager operation failed; check plugin status and try again.' } }, error instanceof TypeError ? 400 : 503); }
+      try { const value = await operation(new URL(request.url), request); return value === null ? json({ error: { code: 'not-found', message: 'Skill not found' } }, 404) : json(value); }
+      catch (error) {
+        const controlled = Number.isInteger(error?.status) && error.status >= 400 && error.status < 600 && typeof error.code === 'string';
+        return json({ error: { code: controlled ? error.code : error instanceof TypeError ? 'invalid-request' : 'operation-failed', message: controlled || error instanceof TypeError ? error.message : 'Skill manager operation failed; check plugin status and try again.' } }, controlled ? error.status : error instanceof TypeError ? 400 : 503);
+      }
     },
   }));
   route('snapshot', 'GET', () => manager.snapshot());
   route('refresh', 'POST', () => manager.refresh());
   route('skills', 'GET', url => detail(manager, url.searchParams.get('id'), url.searchParams.get('offset'), url.searchParams.get('limit')));
+  // File-changing capabilities are owner-only; they are intentionally absent from the agent tool/Cordis read API.
+  route('manage/prepare', 'POST', async (_url, request) => {
+    const value = await actionBody(request, ['id', 'action']);
+    if (!validId(value.id) || !['enable', 'disable', 'archive', 'restore', 'delete'].includes(value.action)) throw new TypeError('A valid instance id and action are required');
+    return manager.prepareAction(value);
+  });
+  route('manage/execute', 'POST', async (_url, request) => {
+    const value = await actionBody(request, ['token', 'confirmationText']);
+    if (typeof value.token !== 'string' || value.token.length < 16 || value.token.length > 512 || value.confirmationText !== undefined && typeof value.confirmationText !== 'string') throw new TypeError('A valid confirmation token is required');
+    return manager.executeAction(value);
+  });
+  route('manage/status', 'GET', url => {
+    if ([...url.searchParams.keys()].some(key => !['id', 'operationId'].includes(key))) throw new TypeError('Unexpected operation status fields');
+    const id = url.searchParams.get('id'), operationId = url.searchParams.get('operationId');
+    if (!validId(id) || typeof operationId !== 'string' || !/^[a-zA-Z0-9_-]{16,128}$/.test(operationId)) throw new TypeError('A valid instance and operation id are required');
+    return manager.actionStatus({ id, operationId });
+  });
   ctx.effect(() => ctx.tools.register({
     name: 'skill_manager',
     description: 'Inspect skills visible to DSH presets and workspaces, observed lifecycle, and instruction-load attempts (24 hours, 7 days, all recorded). Unknown authors and pre-install history are not guessed. Read does not load skill instructions. Refresh rescans current registries and known instruction files; it does not install, edit or execute skills.',

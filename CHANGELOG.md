@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.0
+
+- Per-instance owner controls: enable/disable and, for safely managed local files, archive/restore/permanent delete with explicit confirmation and exact-name deletion.
+- Bundled/plugin/runtime enable/disable uses a profile-local invocation deny, not edits to package files. Real public SDK coverage includes native calls, nested PTC, explicit user injection, same-layer runtime contributions, isolated presets, recomposition and unload restoration.
+- No-file policy plans are explicitly distinguished from physical file/directory plans; the agent tool and Cordis API remain read/refresh-only.
+- SQLite schema 3 adds durable operation/control journals with cross-Host compare-and-set ownership; canonical identity version 2, history, invocation keys and coverage remain intact.
+- Same-filesystem private archive/quarantine, bounded stable fingerprints, no-overwrite restore, stale/expired plan rejection, unknown-outcome receipts, recoverable partial failures and safe unload quiescence.
+- YAML 2.9.0 preserves instruction bodies/comments during invocation-policy edits. Known owner writes are attributed only after exact revision evidence.
+- New Russian management and upgrade guides. Existing images remain clearly disclosed generated catalog previews, not screenshots of the new controls.
+
 ## 0.2.2
 
 - Remove the automatic `prepack` lifecycle hook so pnpm can install the native ESM package directly from a GitHub tag without Git dependency preparation/build approval.

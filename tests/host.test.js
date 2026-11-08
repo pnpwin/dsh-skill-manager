@@ -29,7 +29,7 @@ async function host(t) {
 
 test('owner-channel exact routes and tool share application operations and validation', async t => {
   const h = await host(t), tool = h.tools.get('skill_manager');
-  assert.deepEqual([...h.routes.keys()].sort(), ['/api/skill-manager/v1/refresh', '/api/skill-manager/v1/skills', '/api/skill-manager/v1/snapshot']);
+  assert.deepEqual([...h.routes.keys()].sort(), ['/api/skill-manager/v1/manage/execute', '/api/skill-manager/v1/manage/prepare', '/api/skill-manager/v1/manage/status', '/api/skill-manager/v1/refresh', '/api/skill-manager/v1/skills', '/api/skill-manager/v1/snapshot']);
   const route = name => h.routes.get('/api/skill-manager/v1/' + name);
   const response = await route('snapshot').fetch(new Request('http://fixture/api/skill-manager/v1/snapshot'));
   assert.equal(response.status, 200);

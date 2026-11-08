@@ -1,11 +1,23 @@
 import { SkillStore, skillId } from './store.js';
 import { probeFile } from './file-probe.js';
 import { groupSkillInstances } from './grouping.js';
+import { createFileActions } from './file-actions.js';
+import { createPolicyActions } from './policy-actions.js';
+import { isAbsolute, resolve } from 'node:path';
 
 /** Application operations shared by UI, tools and other Cordis plugins. */
-export function createSkillManager({ adapter, filename, config, publish = () => {}, now = () => new Date().toISOString(), probe = probeFile }) {
+export function createSkillManager({ adapter, filename, config, publish = () => {}, now = () => new Date().toISOString(), probe = probeFile, fileActionsFactory = createFileActions, invocationRuntimeFactory }) {
   const store = new SkillStore(filename, { now });
-  let contexts = [], warnings = [], updatedAt = now(), flight = null, work = null, disposed = false, dirty = false;
+  const management = new Map(), plans = new Map();
+  let storageClosed = false;
+  const protectedRoots = [...(config.protectedSkillDirs ?? [])];
+  if (process.env.DSH_BUNDLED_SKILL_DIR && isAbsolute(process.env.DSH_BUNDLED_SKILL_DIR)) protectedRoots.push(process.env.DSH_BUNDLED_SKILL_DIR);
+  const state = {
+    get: id => storageClosed ? null : store.get(id), getControl: id => storageClosed ? null : store.getControl(id), listControls: () => storageClosed ? [] : store.listControls(),
+    saveControl: (...args) => { if (storageClosed) throw new Error('Skill action storage is closed'); return store.saveControl(...args); },
+  };
+  const files = fileActionsFactory({ state, config, now, protectedRoots });
+  let contexts = [], warnings = [], updatedAt = now(), flight = null, work = null, actionFlight = null, disposed = false, dirty = false;
   const controller = new AbortController();
   const listeners = new Set(), buffered = [];
   const persistentWarnings = new Map();
@@ -15,6 +27,19 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
     try { publish(event); } catch { /* Cordis consumers cannot veto committed state. */ }
   };
   const fail = (code, message) => { persistentWarnings.set(code, { code, message }); notify('health'); };
+  const invocationRuntime = invocationRuntimeFactory?.({
+    disabled: () => state.listControls().filter(row => row.control.invocationOverride?.disabled === true || row.control.pending).map(row => state.get(row.id)).filter(Boolean),
+    config, onChange: () => fail('policy-synchronization', 'An invocation policy synchronization failed. Affected new requests fail closed until their next successful synchronization.'),
+  }) ?? { supported: false, sync: async () => {}, attach: () => () => {}, dispose: async () => {} };
+  const policy = createPolicyActions({ state, runtime: invocationRuntime, config, now, report: fail });
+  const detachPolicy = invocationRuntime.attach();
+  async function assess(skill) {
+    const file = await files.describe(skill), control = state.getControl(skill.id);
+    if (control?.pending || control?.archive || control?.deleted) return { ...file, mode: 'file' };
+    if (file.eligible && !control?.invocationOverride?.disabled) return { ...file, mode: 'file' };
+    const override = policy.describe(skill);
+    return override.eligible || control?.invocationOverride?.disabled ? override : { ...file, mode: 'file' };
+  }
   const commit = (operation, type) => {
     try { operation(); notify(type); }
     catch { fail('observation-write-failed', 'An observation could not be persisted. Counts or lifecycle history may be incomplete; check storage and restart the plugin.'); }
@@ -65,9 +90,15 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
       }
       signal.throwIfAborted();
       // Finish every fallible I/O read before publishing any part of this refresh.
-      const physical = [];
-      for (const skill of store.snapshot()) {
+      const physical = [], proposed = new Map(store.snapshot().map(skill => [skill.id, skill]));
+      for (const skill of proposed.values()) {
         if (skill.path) physical.push([skill.id, await check(skill.path)]);
+      }
+      for (const observation of observations) for (const skill of observation.skills) proposed.set(skill.id, skill);
+      const assessed = new Map();
+      for (const skill of proposed.values()) {
+        signal.throwIfAborted();
+        assessed.set(skill.id, await assess(skill));
       }
       signal.throwIfAborted();
       const at = now();
@@ -76,6 +107,7 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
       if (!found.warnings.some(warning => ['context-limit', 'preset-list-failed', 'preset-unavailable', 'registry-unavailable'].includes(warning.code))) store.reconcileContexts(found.contexts.map(value => value.id), at);
       // A skill losing precedence or a provider is not evidence its file was deleted.
       for (const [id, file] of physical) store.physical(id, file, at);
+      management.clear(); for (const [id, capability] of assessed) management.set(id, capability);
       contexts = found.contexts;
       warnings = [...found.warnings, ...fileWarnings];
       updatedAt = at;
@@ -84,6 +116,7 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
   }
   function refresh() {
     if (disposed) return Promise.reject(new Error('Skill manager is disposed'));
+    if (actionFlight) return actionFlight.then(() => refresh(), () => refresh());
     if (flight) return flight;
     // Do not accumulate concurrent provider leases after a timed-out uncooperative call.
     if (work) return Promise.reject(new Error('A timed-out inventory operation is still draining'));
@@ -111,9 +144,75 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
     }).then(() => disposed ? undefined : snapshot());
     return flight;
   }
+  const unavailableManagement = () => ({ eligible: false, reasonCode: 'not-checked', reason: 'Refresh the catalog before managing this instance.', workingStatus: 'unknown', fileStatus: 'unknown', allowedActions: [], revision: null });
+  const decorate = skill => {
+    const capability = structuredClone(management.get(skill.id) ?? unavailableManagement());
+    if (actionFlight && capability.eligible) { capability.allowedActions = []; capability.reasonCode = 'operation-running'; capability.reason = 'An owner-authorized filesystem operation is running.'; }
+    return { ...skill, management: capability };
+  };
+  function actionError(code, message, status = 409) { return Object.assign(new Error(message), { code, status }); }
+  async function prepareAction(input) {
+    if (disposed) throw actionError('disposed', 'Skill manager is disposed', 410);
+    if (actionFlight) throw actionError('operation-running', 'Another owner-authorized operation is running');
+    const skill = state.get(input?.id);
+    if (!skill) throw actionError('not-found', 'Skill instance not found', 404);
+    const capability = await assess(skill);
+    const plan = capability.mode === 'override' ? await policy.prepare(input) : await files.prepare(input);
+    plan.mode = capability.mode;
+    if (disposed) throw actionError('disposed', 'Skill manager is disposed', 410);
+    const selected = store.get(plan.id);
+    if (selected?.path) {
+      const shared = store.snapshot().filter(skill => skill.id !== selected.id && skill.path && resolve(skill.path) === resolve(selected.path));
+      if (shared.length) plan.warnings.push(`${shared.length} other catalog entries refer to the same physical instruction file and may also reflect this change.`);
+    }
+    for (const [token, value] of plans) if (Date.parse(value.expiresAt) <= Date.parse(now())) plans.delete(token);
+    plans.set(plan.token, { id: plan.id, operationId: plan.operationId, expiresAt: plan.expiresAt, mode: capability.mode });
+    return plan;
+  }
+  function executeAction(input) {
+    if (disposed) return Promise.reject(actionError('disposed', 'Skill manager is disposed', 410));
+    if (actionFlight) return Promise.reject(actionError('operation-running', 'Another owner-authorized operation is running'));
+    const owner = plans.get(input?.token);
+    if (!owner) return Promise.reject(actionError('expired', 'The confirmation plan is unknown, consumed or expired', 410));
+    plans.delete(input.token);
+    const task = (async () => {
+      if (flight) { try { await flight; } catch { /* A degraded catalog does not authorize a mutation; files.execute revalidates its own plan. */ } }
+      if (disposed) throw actionError('disposed', 'Skill manager is disposed', 410);
+      try {
+        const result = await (owner.mode === 'override' ? policy.execute(input) : files.execute(input));
+        const { writeEvidence, ...publicResult } = result;
+        if (writeEvidence) {
+          try {
+            const current = await probe(writeEvidence.path, { maxFileBytes: config.maxFileBytes });
+            if (current.status === 'present' && current.version && current.contentHash === writeEvidence.contentHash) store.mutation({
+              eventKey: `owner-action:${result.operationId}`, path: writeEvidence.path, at: now(), actor: { kind: 'user', label: 'Owner UI' },
+              observation: { kind: 'present', version: current.version },
+            });
+          } catch { fail('management-writer-evidence-unavailable', 'The file action completed, but current revision authorship could not be verified.'); }
+        }
+        return publicResult;
+      }
+      finally {
+        if (owner && !disposed) {
+          try { const skill = store.get(owner.id); if (skill) management.set(owner.id, await assess(skill)); }
+          catch { management.set(owner.id, unavailableManagement()); fail('management-inspection-failed', 'The file operation outcome needs a fresh catalog/status check.'); }
+        }
+      }
+    })();
+    actionFlight = task.finally(() => {
+      actionFlight = null;
+      if (!disposed) { notify('management'); schedule(); }
+    });
+    return actionFlight;
+  }
+  function actionStatus(input) {
+    if (disposed) throw actionError('disposed', 'Skill manager is disposed', 410);
+    const result = files.operationStatus(input);
+    return result.status === 'unknown' ? policy.operationStatus(input) : result;
+  }
   function snapshot() {
     if (disposed) throw new Error('Skill manager is disposed');
-    const skills = store.snapshot(now());
+    const skills = store.snapshot(now()).map(decorate);
     return { apiVersion: 1, identityVersion: 2, updatedAt, contexts: structuredClone(contexts), warnings: structuredClone([...warnings, ...persistentWarnings.values()]),
       coverage: { since: store.since(), mode: 'observed', notes: [
         'Counts cover observed instruction-load attempts while this plugin is enabled, including failures; not task or script executions.',
@@ -128,7 +227,9 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
     apiVersion: 1,
     snapshot,
     refresh,
-    detail: (id, pagination) => { if (disposed) throw new Error('Skill manager is disposed'); return store.detail(id, pagination); },
+    detail: (id, pagination) => { if (disposed) throw new Error('Skill manager is disposed'); const value = store.detail(id, pagination); return value ? { ...value, skill: decorate(value.skill) } : null; },
+    // Kept off the public read-only Cordis service and agent tool; only authenticated owner routes call these.
+    prepareAction, executeAction, actionStatus,
     subscribe(listener) {
       if (disposed) throw new Error('Skill manager is disposed');
       if (typeof listener !== 'function') throw new TypeError('A listener function is required');
@@ -138,7 +239,10 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
       if (disposed) return;
       disposed = true;
       detach(); controller.abort(); clearInterval(interval); clearTimeout(timer); listeners.clear();
-      try { await flight; } catch { /* A cancelled refresh must settle before SQLite closes. */ }
+      // Reject unadmitted plans and quiesce admitted mutations before closing their journal.
+      detachPolicy?.();
+      await Promise.allSettled([flight, actionFlight, files.dispose(), policy.dispose(), invocationRuntime.dispose()]);
+      plans.clear(); management.clear(); storageClosed = true;
       store.close();
     },
   };

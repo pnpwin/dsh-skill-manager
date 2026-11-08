@@ -1,23 +1,55 @@
 {
   "name": "@pnpwin/dsh-skill-manager",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Skill inventory, observed lifecycle and invocation statistics for DeepSeek Harness",
   "author": "pnpwin",
-  "repository": { "type": "git", "url": "git+https://github.com/pnpwin/dsh-skill-manager.git" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pnpwin/dsh-skill-manager.git"
+  },
   "homepage": "https://github.com/pnpwin/dsh-skill-manager#readme",
-  "bugs": { "url": "https://github.com/pnpwin/dsh-skill-manager/issues" },
-  "keywords": ["deepseek-harness", "dsh", "skills", "lifecycle", "observability", "cordis"],
+  "bugs": {
+    "url": "https://github.com/pnpwin/dsh-skill-manager/issues"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "skills",
+    "lifecycle",
+    "observability",
+    "cordis"
+  ],
   "type": "module",
   "license": "MIT",
-  "engines": { "node": ">=24.9.0", "dsh": ">=0.2.2-rc.1 <0.3.0" },
+  "engines": {
+    "node": ">=24.9.0",
+    "dsh": ">=0.2.2-rc.1 <0.3.0"
+  },
   "exports": {
     ".": "./src/index.js",
-    "./api": { "types": "./src/api.d.ts", "default": "./src/api.js" },
+    "./api": {
+      "types": "./src/api.d.ts",
+      "default": "./src/api.js"
+    },
     "./client": "./src/client.js",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg"
   },
-  "files": ["src/*.js", "src/*.d.ts", "src/docs/*.py", "src/docs/*.json", "locale/*.json", "cordis.patch.yml", "icon.svg", "README.md", "LICENSE", "UPSTREAM.md", "CHANGELOG.md", "docs/*.md", "docs/images/*.png"],
+  "files": [
+    "src/*.js",
+    "src/*.d.ts",
+    "src/docs/*.py",
+    "src/docs/*.json",
+    "locale/*.json",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "LICENSE",
+    "UPSTREAM.md",
+    "CHANGELOG.md",
+    "docs/*.md",
+    "docs/images/*.png"
+  ],
   "scripts": {
     "test": "node --test tests/*.test.js",
     "check": "node src/check.js",
@@ -25,7 +57,19 @@
     "release:check": "npm test && npm run build"
   },
   "dsh": {
-    "bundle": { "patch": "./cordis.patch.yml" },
-    "client": { "platform": "web", "immediately": true, "inject": ["@deepseek-ai/dsh-client-ui-layout", "@deepseek-ai/dsh-client-locale"] }
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  },
+  "dependencies": {
+    "yaml": "2.9.0"
   }
 }

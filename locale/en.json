@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "Skill Manager",
-    "description": "A full-screen skill catalog grouped by name, with expandable canonical instances, observed invocation counts and lifecycle history. Unknown attribution, content equality and coverage remain explicit."
+    "description": "A grouped skill catalog with observed usage and lifecycle history. Owner-confirmed local file actions and backend-authorized invocation-policy overrides for packaged skills; package files and supplier restrictions stay protected."
   }
 }

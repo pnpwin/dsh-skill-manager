@@ -2,12 +2,17 @@ import { DatabaseSync } from 'node:sqlite';
 import { mkdirSync, chmodSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { skillId, canonicalResourceBase } from './identity.js';
-import { migrateIdentityV2, membershipOf } from './migration.js';
+import { migrateIdentityV2, migrateManagementV3, membershipOf } from './migration.js';
 export { skillId } from './identity.js';
 
 const DAY = 86400000;
 const encode = value => JSON.stringify(value);
 const decode = value => JSON.parse(value);
+function controlRecord(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('Invalid filesystem control record');
+  if (value.invocationOverride !== undefined && (!value.invocationOverride || typeof value.invocationOverride !== 'object' || Array.isArray(value.invocationOverride) || typeof value.invocationOverride.disabled !== 'boolean')) throw new Error('Invalid durable invocation policy');
+  return value;
+}
 /** Plugin-owned SQLite index. It never stores instruction bodies or raw session logs. */
 export class SkillStore {
   constructor(filename, { now = () => new Date().toISOString() } = {}) {
@@ -17,7 +22,7 @@ export class SkillStore {
     try {
       this.db.exec('PRAGMA busy_timeout=5000; PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL;');
       const version = this.db.prepare('PRAGMA user_version').get().user_version;
-      if (version > 2) throw new Error(`Unsupported skill-manager database version ${version}; a newer plugin is required`);
+      if (version > 3) throw new Error(`Unsupported skill-manager database version ${version}; a newer plugin is required`);
       this.db.exec(`
         CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS skills (id TEXT PRIMARY KEY, data TEXT NOT NULL);
@@ -28,6 +33,7 @@ export class SkillStore {
         CREATE INDEX IF NOT EXISTS invocation_skill_time ON invocations(skill_id,at DESC,event_key);
       `);
       if (version < 2) migrateIdentityV2(this.db);
+      if (version < 3) migrateManagementV3(this.db);
       this.db.prepare('INSERT OR IGNORE INTO meta VALUES (?,?)').run('since', now());
       if (filename !== ':memory:') chmodSync(filename, 0o600);
     } catch (error) { this.db.close(); throw error; }
@@ -197,6 +203,30 @@ export class SkillStore {
     if (!skill) return null;
     const events = this.db.prepare('SELECT id,kind,at,actor,details FROM events WHERE skill_id=? ORDER BY at DESC,id DESC LIMIT ? OFFSET ?').all(id, limit, offset).map(row => ({ ...row, actor: row.actor ? decode(row.actor) : null, details: decode(row.details) }));
     return { skill, events, offset, limit, total: this.db.prepare('SELECT COUNT(*) AS n FROM events WHERE skill_id=?').get(id).n };
+  }
+  getControl(id) {
+    const row = this.db.prepare('SELECT data FROM file_controls WHERE skill_id=?').get(this.canonicalId(id));
+    if (!row) return null;
+    return controlRecord(decode(row.data));
+  }
+  listControls() {
+    return this.db.prepare('SELECT skill_id FROM file_controls ORDER BY skill_id').all().map(row => ({ id: row.skill_id, control: this.getControl(row.skill_id) }));
+  }
+  /** Commit operation intent/status and its audit event in one transaction, before dependent file changes. */
+  saveControl(id, control, eventKind, details = {}, actor = null, expectedControl) {
+    id = this.canonicalId(id);
+    controlRecord(control);
+    return this.transaction(() => {
+      if (!this.get(id)) throw new Error('Unknown skill instance');
+      const previous = this.getControl(id) ?? {};
+      if (expectedControl !== undefined && encode(previous) !== encode(expectedControl)) throw Object.assign(new Error('Filesystem control state changed after inspection'), { status: 409, code: 'conflict' });
+      if (previous.pending) {
+        const owner = previous.pending.operationId;
+        if (!owner || control.pending && control.pending.operationId !== owner || control.lastOperation?.id !== owner) throw Object.assign(new Error('Another operation owns the durable filesystem journal'), { status: 409, code: 'conflict' });
+      }
+      this.db.prepare('INSERT INTO file_controls VALUES (?,?) ON CONFLICT(skill_id) DO UPDATE SET data=excluded.data').run(id, encode(control));
+      if (eventKind) this.event(id, eventKind, this.now(), actor, details);
+    });
   }
   since() { return this.db.prepare('SELECT value FROM meta WHERE key=?').get('since').value; }
   close() { this.db.close(); }
