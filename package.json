@@ -1,6 +1,6 @@
 {
   "name": "@pnpwin/dsh-skill-manager",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Skill inventory, observed lifecycle and invocation statistics for DeepSeek Harness",
   "author": "pnpwin",
   "repository": {

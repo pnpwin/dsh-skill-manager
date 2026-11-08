@@ -18,8 +18,8 @@
 
 ## Быстрый старт
 
-1. В DSH Plugin Manager установите `github:pnpwin/dsh-skill-manager#v0.3.0`.
-2. Если результат требует перезапуск, полностью перезапустите DSH — обновление страницы не заменяет Host JavaScript.
+1. В DSH Plugin Manager установите `github:pnpwin/dsh-skill-manager#v0.3.1`.
+2. После обновления проверьте фактический API; при старом поведении полностью перезапустите DSH даже если Plugin Manager сообщил `applied`. Обновление страницы не заменяет закэшированный Host JavaScript.
 3. Откройте **Менеджер навыков** в боковой панели, нажмите **Обновить каталог**.
 4. Раскройте строку с именем, затем **Открыть этот экземпляр**, чтобы увидеть источник, доступность по scope, статистику и историю.
 
@@ -51,10 +51,10 @@ Registry DSH отдаёт **победителей**, не все перекры
 
 Требуются DSH **0.2.2-rc.1** и Node **24.9+**, встроенный `node:sqlite`. Проверено по исходникам 0.2.2-rc.1 и поставляемым runtime API; pre-stable API DSH изолированы в [адаптере](src/dsh-adapter.js). Публичная поставка — [GitHub-репозиторий](https://github.com/pnpwin/dsh-skill-manager) и версионированные [релизы](https://github.com/pnpwin/dsh-skill-manager/releases); публикация в npm не выполняется.
 
-Установка через DSH **Plugin Manager → install bundle**, target `github:pnpwin/dsh-skill-manager#v0.3.0`. Начиная с 0.2.2 пакет не содержит install/prepare/prepack lifecycle-скриптов и не требует сборки при установке из GitHub: ESM-файлы уже готовы. Проверки запускаются явно перед публикацией (`npm run release:check`). Для архивной 0.2.1, где pnpm мог запросить разрешение на Git preparation, доступен предварительно собранный `.tgz` в GitHub Releases; автоматически разрешать заблокированные скрипты не следует. Эквивалентный вызов агентского инструмента:
+Установка через DSH **Plugin Manager → install bundle**, target `github:pnpwin/dsh-skill-manager#v0.3.1`. Начиная с 0.2.2 пакет не содержит install/prepare/prepack lifecycle-скриптов и не требует сборки при установке из GitHub: ESM-файлы уже готовы. Проверки запускаются явно перед публикацией (`npm run release:check`). Для архивной 0.2.1, где pnpm мог запросить разрешение на Git preparation, доступен предварительно собранный `.tgz` в GitHub Releases; автоматически разрешать заблокированные скрипты не следует. Эквивалентный вызов агентского инструмента:
 
 ```json
-{"action":"install_bundle","target":"github:pnpwin/dsh-skill-manager#v0.3.0"}
+{"action":"install_bundle","target":"github:pnpwin/dsh-skill-manager#v0.3.1"}
 ```
 
 Для разработки допустима установка локальной директории тем же инструментом. В HMR-профиле замена уже подключённого пакета может требовать `remove_bundle` с точным именем `@pnpwin/dsh-skill-manager`, затем установку GitHub-версии. Не удаляйте профиль или SQLite: Plugin Manager сохраняет пользовательскую patch-конфигурацию, данные и credential bindings; имя пакета и row ID `pnpwin-skill-manager` остаются прежними. Если новая установка не удалась после удаления dependency, явно восстановите предыдущий источник через Plugin Manager. В профиле без HMR следуйте возвращённому `nextStep`, не обходите требование остановить профиль. Файлы живого профиля вручную не редактируются; необходимость полного перезапуска определяется результатом операции.

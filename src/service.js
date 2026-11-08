@@ -3,6 +3,7 @@ import { probeFile } from './file-probe.js';
 import { groupSkillInstances } from './grouping.js';
 import { createFileActions } from './file-actions.js';
 import { createPolicyActions } from './policy-actions.js';
+import { fileAvailability, withAvailability } from './management-availability.js';
 import { isAbsolute, resolve } from 'node:path';
 
 /** Application operations shared by UI, tools and other Cordis plugins. */
@@ -34,11 +35,15 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
   const policy = createPolicyActions({ state, runtime: invocationRuntime, config, now, report: fail });
   const detachPolicy = invocationRuntime.attach();
   async function assess(skill) {
-    const file = await files.describe(skill), control = state.getControl(skill.id);
+    const current = { ...skill, status: skill.file?.status ?? skill.status };
+    const file = await files.describe(current), control = state.getControl(skill.id);
     if (control?.pending || control?.archive || control?.deleted) return { ...file, mode: 'file' };
     if (file.eligible && !control?.invocationOverride?.disabled) return { ...file, mode: 'file' };
-    const override = policy.describe(skill);
-    return override.eligible || control?.invocationOverride?.disabled ? override : { ...file, mode: 'file' };
+    // A protected file is not necessarily present. Never turn a failed file inspection into an enabled override.
+    const presence = skill.path ? await fileAvailability(skill.path) : { status: current.status };
+    const status = current.status === 'present' ? presence.status : current.status;
+    const override = policy.describe({ ...current, file: undefined, status });
+    return override.eligible || control?.invocationOverride?.disabled ? override : withAvailability({ ...current, status }, { ...file, mode: 'file' });
   }
   const commit = (operation, type) => {
     try { operation(); notify(type); }
@@ -92,9 +97,9 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
       // Finish every fallible I/O read before publishing any part of this refresh.
       const physical = [], proposed = new Map(store.snapshot().map(skill => [skill.id, skill]));
       for (const skill of proposed.values()) {
-        if (skill.path) physical.push([skill.id, await check(skill.path)]);
+        if (skill.path) { const file = await check(skill.path); physical.push([skill.id, file]); proposed.set(skill.id, { ...skill, status: file.status }); }
       }
-      for (const observation of observations) for (const skill of observation.skills) proposed.set(skill.id, skill);
+      for (const observation of observations) for (const skill of observation.skills) proposed.set(skill.id, { ...skill, status: skill.file.status });
       const assessed = new Map();
       for (const skill of proposed.values()) {
         signal.throwIfAborted();
@@ -146,7 +151,7 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
   }
   const unavailableManagement = () => ({ eligible: false, reasonCode: 'not-checked', reason: 'Refresh the catalog before managing this instance.', workingStatus: 'unknown', fileStatus: 'unknown', allowedActions: [], revision: null });
   const decorate = skill => {
-    const capability = structuredClone(management.get(skill.id) ?? unavailableManagement());
+    const capability = withAvailability(skill, structuredClone(management.get(skill.id) ?? unavailableManagement()));
     if (actionFlight && capability.eligible) { capability.allowedActions = []; capability.reasonCode = 'operation-running'; capability.reason = 'An owner-authorized filesystem operation is running.'; }
     return { ...skill, management: capability };
   };
@@ -157,6 +162,7 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
     const skill = state.get(input?.id);
     if (!skill) throw actionError('not-found', 'Skill instance not found', 404);
     const capability = await assess(skill);
+    if (!capability.eligible || !capability.allowedActions.includes(input?.action)) throw actionError(capability.workingStatus === 'unavailable' ? 'unavailable' : 'protected', capability.reason ?? 'This action is unavailable for the selected instance', capability.workingStatus === 'unavailable' ? 409 : 403);
     const plan = capability.mode === 'override' ? await policy.prepare(input) : await files.prepare(input);
     plan.mode = capability.mode;
     if (disposed) throw actionError('disposed', 'Skill manager is disposed', 410);
@@ -166,7 +172,7 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
       if (shared.length) plan.warnings.push(`${shared.length} other catalog entries refer to the same physical instruction file and may also reflect this change.`);
     }
     for (const [token, value] of plans) if (Date.parse(value.expiresAt) <= Date.parse(now())) plans.delete(token);
-    plans.set(plan.token, { id: plan.id, operationId: plan.operationId, expiresAt: plan.expiresAt, mode: capability.mode });
+    plans.set(plan.token, { id: plan.id, operationId: plan.operationId, expiresAt: plan.expiresAt, mode: capability.mode, action: plan.action });
     return plan;
   }
   function executeAction(input) {
@@ -179,6 +185,9 @@ export function createSkillManager({ adapter, filename, config, publish = () => 
       if (flight) { try { await flight; } catch { /* A degraded catalog does not authorize a mutation; files.execute revalidates its own plan. */ } }
       if (disposed) throw actionError('disposed', 'Skill manager is disposed', 410);
       try {
+        const selected = state.get(owner.id);
+        const capability = selected && await assess(selected);
+        if (!capability?.eligible || !capability.allowedActions.includes(owner.action)) throw actionError('unavailable', capability?.reason ?? 'The instance is no longer available; refresh before preparing a new action');
         const result = await (owner.mode === 'override' ? policy.execute(input) : files.execute(input));
         const { writeEvidence, ...publicResult } = result;
         if (writeEvidence) {

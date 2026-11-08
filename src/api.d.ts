@@ -6,7 +6,10 @@ export type SkillManagementAction = 'enable' | 'disable' | 'archive' | 'restore'
 /** Read-only assessment; changing files or granting invocation overrides requires the authenticated owner UI. */
 export interface SkillManagement {
   eligible: boolean; mode?: 'file' | 'override'; reasonCode: string | null; reason: string | null;
-  workingStatus: 'enabled' | 'disabled' | 'unknown'; fileStatus: 'active' | 'archived' | 'deleted' | 'missing' | 'unknown';
+  workingStatus: 'enabled' | 'disabled' | 'unavailable' | 'unknown';
+  /** Saved/latest-known preference, not evidence that an unavailable skill can run. */
+  configuredWorkingStatus?: 'enabled' | 'disabled' | 'unknown';
+  fileStatus: 'active' | 'archived' | 'deleted' | 'missing' | 'unknown';
   allowedActions: SkillManagementAction[]; revision: string | null;
 }
 export interface SkillManagementPlanBase {

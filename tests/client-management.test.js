@@ -8,9 +8,9 @@ const source = readFileSync(new URL('../src/client.js', import.meta.url), 'utf8'
 const start = source.indexOf('    function allowedManagementActions(');
 const end = source.indexOf('    // Pure view projection:');
 assert.ok(start >= 0 && end > start, 'client guard boundaries remain discoverable');
-const guards = runInNewContext(`${source.slice(start, end)}\n({allowedManagementActions, validManagementPlan, canConfirmManagementPlan, managementOutcomeUncertain, managementStatusResolved})`, Object.create(null), { timeout: 1000 });
+const guards = runInNewContext(`${source.slice(start, end)}\n({allowedManagementActions, managementPresentation, validManagementPlan, canConfirmManagementPlan, managementOutcomeUncertain, managementStatusResolved})`, Object.create(null), { timeout: 1000 });
 const NOW = Date.parse('2026-11-08T12:00:00.000Z');
-const local = { id: 'test-file-instance', name: 'точное-имя', provider: 'filesystem', source: 'custom', status: 'missing', management: { mode: 'file', eligible: true, allowedActions: ['enable', 'disable', 'archive', 'restore', 'delete'] } };
+const local = { id: 'test-file-instance', name: 'точное-имя', provider: 'filesystem', source: 'custom', status: 'present', management: { mode: 'file', eligible: true, allowedActions: ['enable', 'disable', 'archive', 'restore', 'delete'] } };
 const packaged = { id: 'test-policy-instance', name: 'package-skill', provider: 'test-provider', source: 'bundled', management: { mode: 'override', eligible: true, allowedActions: ['enable', 'disable'] } };
 const base = skill => ({ token: 'opaque-test-token', operationId: 'test-operation', id: skill.id, name: skill.name, action: 'disable', expiresAt: new Date(NOW + 120000).toISOString(), warnings: [], confirmationText: null });
 const filePlan = (action = 'disable') => ({ ...base(local), action, path: '/example/skills/example/SKILL.md', targetKind: 'file', fileCount: 1, totalBytes: 123, confirmationText: action === 'delete' ? local.name : null });
@@ -105,6 +105,69 @@ test('additive policy copy is bilingual and warns enabling is not a supplier for
   }
   assert.match(dictionaries.en.policyEnableNote, /only.*manager/);
   assert.match(dictionaries.ru.policyEnableNote, /ограничения поставщика/);
+});
+
+test('missing and unavailable selected records override stale enabled/disabled policy displays and plans', () => {
+  for (const status of ['missing', 'unavailable']) {
+    for (const workingStatus of ['enabled', 'disabled']) {
+      const skill = { ...packaged, status, management: { ...packaged.management, workingStatus, fileStatus: 'active', configuredWorkingStatus: workingStatus } };
+      const view = guards.managementPresentation(skill);
+      assert.equal(view.workingStatus, 'unavailable');
+      assert.equal(view.configuredWorkingStatus, workingStatus, 'saved policy is retained as separately labeled metadata');
+      assert.deepEqual(Array.from(guards.allowedManagementActions(skill.management, skill)), []);
+      for (const action of ['enable', 'disable']) assert.equal(guards.validManagementPlan(policyPlan(action), skill, action), false);
+    }
+    const physical = { ...local, status, management: { ...local.management, workingStatus: 'enabled', fileStatus: 'active' } };
+    assert.deepEqual(Array.from(guards.allowedManagementActions(physical.management, physical)), []);
+    for (const action of ['enable', 'disable', 'archive', 'restore', 'delete']) assert.equal(guards.validManagementPlan(filePlan(action), physical, action), false);
+  }
+});
+
+test('backend unavailable working status and missing-file evidence fail closed without a parent status', () => {
+  for (const evidence of [{ workingStatus: 'unavailable' }, { fileStatus: 'missing' }, { reasonCode: 'file-missing' }, { reasonCode: 'instance-unavailable' }, { reasonCode: 'availability-unknown' }]) {
+    const management = { ...packaged.management, workingStatus: 'enabled', ...evidence };
+    const skill = { ...packaged, management };
+    assert.deepEqual(Array.from(guards.allowedManagementActions(management)), []);
+    assert.equal(guards.validManagementPlan(policyPlan(), skill, 'disable'), false);
+    assert.ok(['unavailable', 'unknown'].includes(guards.managementPresentation(skill).workingStatus));
+  }
+});
+
+test('archived source remains unavailable while valid archive restore and deletion stay usable', () => {
+  const archived = { ...local, status: 'missing', management: { ...local.management, fileStatus: 'archived', workingStatus: 'unavailable', configuredWorkingStatus: 'disabled' } };
+  assert.equal(guards.managementPresentation(archived).workingStatus, 'unavailable');
+  assert.deepEqual(Array.from(guards.allowedManagementActions(archived.management, archived)), ['restore', 'delete']);
+  assert.deepEqual(Array.from(guards.allowedManagementActions(archived.management)), ['restore', 'delete']);
+  for (const action of ['restore', 'delete']) assert.equal(guards.validManagementPlan(filePlan(action), archived, action), true);
+  for (const action of ['enable', 'disable', 'archive']) assert.equal(guards.validManagementPlan(filePlan(action), archived, action), false);
+  const deleted = { ...archived, management: { ...archived.management, fileStatus: 'deleted' } };
+  assert.deepEqual(Array.from(guards.allowedManagementActions(deleted.management, deleted)), []);
+  assert.equal(guards.validManagementPlan(filePlan('restore'), deleted, 'restore'), false);
+});
+
+test('present virtual definitions do not need a filesystem path; legacy undefined status still works', () => {
+  const virtual = { ...packaged, status: 'present', path: null, management: { ...packaged.management, workingStatus: 'enabled', fileStatus: 'unknown' } };
+  assert.equal(guards.managementPresentation(virtual).workingStatus, 'enabled');
+  assert.deepEqual(Array.from(guards.allowedManagementActions(virtual.management, virtual)), ['enable', 'disable']);
+  assert.equal(guards.validManagementPlan(policyPlan(), virtual, 'disable'), true);
+  assert.equal(guards.validManagementPlan(policyPlan(), packaged, 'disable'), true, 'optional legacy status is not treated as confirmed absence');
+});
+
+test('saved policy is explicit metadata only when effective availability is unavailable or unknown', () => {
+  const management = { ...packaged.management, workingStatus: 'enabled', configuredWorkingStatus: 'disabled' };
+  assert.equal(guards.managementPresentation({ ...packaged, status: 'present', management }).configuredWorkingStatus, null);
+  assert.equal(guards.managementPresentation({ ...packaged, status: 'missing', management }).configuredWorkingStatus, 'disabled');
+  assert.equal(guards.managementPresentation({ ...packaged, status: 'unknown', management }).configuredWorkingStatus, 'disabled');
+  assert.equal(guards.managementPresentation({ ...packaged, status: 'missing', management: { ...management, configuredWorkingStatus: undefined } }).configuredWorkingStatus, null);
+  const dictStart = source.indexOf('    const dictionaries =');
+  const dictEnd = source.indexOf('    // Pure management guards:');
+  const dict = runInNewContext(`${source.slice(dictStart, dictEnd)}\ndictionaries`, Object.create(null), { timeout: 1000 });
+  assert.equal(dict.en.workingUnavailable, 'Unavailable');
+  assert.equal(dict.ru.workingUnavailable, 'Недоступен');
+  assert.equal(dict.en.savedPolicy, 'Saved policy');
+  assert.equal(dict.ru.savedPolicy, 'Сохранённая политика');
+  assert.ok(source.includes("className:'dsm-caption'}, `${t('savedPolicy')}:"));
+  assert.ok(!source.includes("t(workingKeys[management?.workingStatus]"));
 });
 
 test('mutation flow remains single, explicit and secret-token-only; policy target is not a path', () => {

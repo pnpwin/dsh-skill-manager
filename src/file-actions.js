@@ -5,6 +5,7 @@ import { basename, dirname, isAbsolute, join, relative, resolve, sep } from 'nod
 import { fileURLToPath } from 'node:url';
 import { createHash, randomUUID } from 'node:crypto';
 import { parseDocument, isAlias } from 'yaml';
+import { configuredStatus, withAvailability } from './management-availability.js';
 
 const SOURCES = new Set(['project-dsh', 'project-agents', 'user-dsh', 'user-agents', 'custom']);
 const ACTIONS = new Set(['enable', 'disable', 'archive', 'restore', 'delete']);
@@ -225,11 +226,11 @@ export function createFileActions({ state, config = {}, now = () => new Date().t
           reasonCode = 'file-actions-unavailable'; reasonText = error.status ? error.message : 'Resources cannot be managed safely; instruction policy remains editable.';
         }
       }
-      return { eligible: true, reasonCode, reason: reasonText, workingStatus: working(found.parsed), fileStatus: archived ? 'archived' : 'active',
-        allowedActions, revision: found.snapshot.revision };
+      return withAvailability(skill, { eligible: true, reasonCode, reason: reasonText, workingStatus: working(found.parsed), configuredWorkingStatus: working(found.parsed), fileStatus: archived ? 'archived' : 'active',
+        allowedActions, revision: found.snapshot.revision });
     } catch (error) {
       const control = skill?.id ? state.getControl(skill.id) : null;
-      return reason(error.code ?? 'unreadable', error.status ? error.message : 'The skill could not be inspected safely.', control?.deleted ? 'deleted' : control?.archive ? 'archived' : error.code === 'missing' ? 'missing' : 'unknown');
+      return withAvailability(skill, { ...reason(error.code ?? 'unreadable', error.status ? error.message : 'The skill could not be inspected safely.', control?.deleted ? 'deleted' : control?.archive ? 'archived' : error.code === 'missing' ? 'missing' : 'unknown'), configuredWorkingStatus: configuredStatus(skill, control) });
     }
   }
   async function preparePlan({ id, action } = {}) {

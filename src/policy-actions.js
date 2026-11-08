@@ -1,6 +1,7 @@
 /** Confirmed owner-only invocation overrides; never edits provider or package files. */
 import { createHash, randomUUID } from 'node:crypto';
 import { canonicalResourceBase } from './identity.js';
+import { configuredStatus, withAvailability } from './management-availability.js';
 
 const OWNER = Object.freeze({ kind: 'user', label: 'Owner UI' });
 const fail = (code, message, status = 409) => Object.assign(new Error(message), { code, status });
@@ -24,13 +25,13 @@ export function createPolicyActions({ state, runtime, config = {}, now = () => n
     const control = known(skill) ? state.getControl(skill.id) ?? {} : {};
     const allowed = known(skill) && runtime.supported && !control.pending && !control.archive && !control.deleted;
     const blocked = control.invocationOverride?.disabled === true;
-    return {
-      eligible: !!allowed, mode: 'override', reasonCode: allowed ? 'file-actions-protected' : !known(skill) ? 'unknown-instance' : control.pending ? 'recovery-required' : 'policy-unavailable',
+    return withAvailability({ ...skill, status: skill?.file?.status ?? skill?.status ?? 'unknown' }, {
+      eligible: !!allowed, mode: 'override', configuredWorkingStatus: configuredStatus(skill, control), reasonCode: allowed ? 'file-actions-protected' : !known(skill) ? 'unknown-instance' : control.pending ? 'recovery-required' : 'policy-unavailable',
       reason: allowed ? 'Only invocation policy can be changed here; provider/package files remain protected.' : 'Invocation policy cannot be verified or this instance requires recovery. No package files will be modified.',
       workingStatus: !allowed ? 'unknown' : blocked ? 'disabled' : skill.invocation?.modelInvocable || skill.invocation?.userInvocable ? 'enabled' : 'disabled',
       fileStatus: skill?.path ? skill.status === 'present' ? 'active' : skill.status === 'missing' ? 'missing' : 'unknown' : 'unknown',
       allowedActions: allowed ? [blocked ? 'enable' : 'disable'] : [], revision: known(skill) ? revision(skill) : null,
-    };
+    });
   }
   function prepare({ id, action } = {}) {
     check();

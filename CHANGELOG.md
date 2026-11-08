@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1
+
+- Missing/unavailable instances no longer appear enabled or offer invocation toggles. Saved/latest-known policy is displayed separately from current availability.
+- Fresh physical-presence checks at owner preparation and admission prevent a stale protected-file plan from changing policy after the instruction disappears.
+- Snapshot/detail availability is reconciled against committed state, including virtual disappearance in the same refresh; stale cached assessments cannot advertise active controls.
+- Archived originals remain unavailable for invocation while retaining valid restore/delete actions. History, identity and saved preferences are unchanged; reappearance restores applicable controls.
+- No database migration. A full Host restart may be needed even when Plugin Manager reports applied, because Node can retain the previous module generation.
+
 ## 0.3.0
 
 - Per-instance owner controls: enable/disable and, for safely managed local files, archive/restore/permanent delete with explicit confirmation and exact-name deletion.
